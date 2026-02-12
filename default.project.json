@@ -1,0 +1,15 @@
+{
+  "name": "fusion-utils",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "fusion_utils": {
+        "$path": "src"
+      },
+      "Packages": {
+        "$path": "roblox_packages"
+      }
+    }
+  }
+}

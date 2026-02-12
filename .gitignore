@@ -1,0 +1,11 @@
+# Project place file
+/fusion-utils.rbxlx
+
+# Roblox Studio lock files
+/*.rbxlx.lock
+/*.rbxl.lock
+
+sourcemap.json
+
+/luau_packages
+/lune_packages
