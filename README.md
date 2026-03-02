@@ -5,7 +5,7 @@ A collection of useful [Fusion](https://elttob.uk/Fusion/) scope-method construc
 ## Installation
 
 ```bash
-pesde add gh#daireb/fusion_utils#v0.1.0
+pesde add gh#daireb/FusionUtils#v0.1.0
 ```
 
 ## Usage
