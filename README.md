@@ -5,7 +5,7 @@ A collection of useful [Fusion](https://elttob.uk/Fusion/) scope-method construc
 ## Installation
 
 ```bash
-pesde add daireb/fusion_utils
+pesde add gh#daireb/fusion_utils#v0.1.0
 ```
 
 ## Usage
@@ -13,8 +13,8 @@ pesde add daireb/fusion_utils
 Spread `FusionUtils` into `Fusion.scoped()` to add the constructors to your scope:
 
 ```lua
-local Fusion = require(ReplicatedStorage.Packages.Fusion)
-local FusionUtils = require(ReplicatedStorage.Packages.fusion_utils)
+local Fusion = require(Path.To.Fusion)
+local FusionUtils = require(Path.To.FusionUtils)
 
 local scope = Fusion.scoped(Fusion, FusionUtils)
 ```
@@ -42,7 +42,7 @@ local clock = scope:Clock()
 
 ### Time
 
-Returns a Fusion `Value` that updates with `os.time()` every frame via `RunService.Heartbeat`. Returns whole seconds since the Unix epoch.
+Returns a Fusion `Value` that updates with `os.time()` once per second on `RunService.Heartbeat`. Returns whole seconds since the Unix epoch.
 
 ```lua
 local time = scope:Time()
@@ -66,9 +66,11 @@ local money = scope:FromAttribute(player, "Money")
 local level = scope:FromAttribute(player, "Level")
 ```
 
-## Recommended: Globals Module for Singleton Clock/Time
+> ⚠️ Note: Values from both `scope:FromProperty` and `scope:FromAttribute` will stop updating but keep their value if the instance is destroyed.
 
-If you want a single shared `Clock` or `Time` value across your entire codebase (one Heartbeat connection, shared by all consumers), create a small globals module:
+## Recommended: Globals Module for Singletons
+
+If you want a single shared `Clock` or `Time` value across your entire codebase, create a small globals module:
 
 ```lua
 -- shared/Globals.luau
@@ -86,11 +88,11 @@ return {
 Then require it from anywhere:
 
 ```lua
-local Globals = require(ReplicatedStorage.shared.Globals)
-local clock = Globals.Clock
+local FusionGlobals = require(Path.To.FusionGlobals)
+local clock = FusionGlobals.Clock
 ```
 
-This works because `require()` executes the module on first call and caches the result. Every subsequent `require()` returns the same table with the same `Value` objects -- no load order issues, no separate init step.
+This means that there's only one heartbeat connection and is more optimised than doing it inline in several places.
 
 ## License
 
