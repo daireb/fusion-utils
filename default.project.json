@@ -10,6 +10,12 @@
       "Packages": {
         "$path": "roblox_packages"
       }
+    },
+
+    "ServerScriptService": {
+      "TestRunner": {
+        "$path": "test"
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 # Project place file
-/fusion-utils.rbxlx
+*.rbxl
 
 # Roblox Studio lock files
 /*.rbxlx.lock
@@ -9,3 +9,4 @@ sourcemap.json
 
 /luau_packages
 /lune_packages
+/roblox_packages
