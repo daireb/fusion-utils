@@ -1,4 +1,4 @@
-# fusion-utils
+# FusionUtils
 
 A collection of useful [Fusion](https://elttob.uk/Fusion/) scope-method constructors for Roblox.
 
