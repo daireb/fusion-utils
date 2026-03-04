@@ -1,11 +1,11 @@
-# fusion-utils
+# FusionUtils
 
 A collection of useful [Fusion](https://elttob.uk/Fusion/) scope-method constructors for Roblox.
 
 ## Installation
 
 ```bash
-pesde add gh#daireb/fusion_utils#v0.2.0
+pesde add gh#daireb/FusionUtils#v0.2.0
 ```
 
 ## Usage
