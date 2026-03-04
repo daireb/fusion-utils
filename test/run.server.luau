@@ -12,6 +12,8 @@ require(script.Parent["Clock.spec"])(T, Fusion, FusionUtils, makeScopeWithUtils)
 require(script.Parent["Time.spec"])(T, Fusion, FusionUtils, makeScopeWithUtils)
 require(script.Parent["FromProperty.spec"])(T, Fusion, FusionUtils, makeScopeWithUtils)
 require(script.Parent["FromAttribute.spec"])(T, Fusion, FusionUtils, makeScopeWithUtils)
+require(script.Parent["BindToProperty.spec"])(T, Fusion, FusionUtils, makeScopeWithUtils)
+require(script.Parent["BindToAttribute.spec"])(T, Fusion, FusionUtils, makeScopeWithUtils)
 
 local allPassed = T.report()
 

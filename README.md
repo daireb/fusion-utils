@@ -5,7 +5,7 @@ A collection of useful [Fusion](https://elttob.uk/Fusion/) scope-method construc
 ## Installation
 
 ```bash
-pesde add gh#daireb/fusion_utils#v0.1.0
+pesde add gh#daireb/fusion_utils#v0.2.0
 ```
 
 ## Usage
@@ -26,6 +26,10 @@ local clock = scope:Clock()
 local time = scope:Time()
 local hp = scope:FromProperty(humanoid, "Health")
 local money = scope:FromAttribute(player, "Money")
+
+-- Delayed hydration: create a value now, bind it to a property/attribute later
+local absSize = scope:Value(Vector2.zero)
+scope:BindToProperty(absSize, scrollingFrame, "AbsoluteSize")
 ```
 
 All connections are cleaned up automatically when the scope is destroyed.
@@ -67,6 +71,33 @@ local level = scope:FromAttribute(player, "Level")
 ```
 
 > ⚠️ Note: Values from both `scope:FromProperty` and `scope:FromAttribute` will stop updating but keep their value if the instance is destroyed.
+
+### BindToProperty
+
+Binds an existing Fusion `Value` to track an instance property. Useful when you need to create the value before the instance is available (e.g. via `[Ref]`).
+
+```lua
+local absSize = scope:Value(Vector2.zero)
+
+local scrollingFrame = scope:New "ScrollingFrame" {
+    [Ref] = function(instance)
+        scope:BindToProperty(absSize, instance, "AbsoluteSize")
+    end,
+}
+```
+
+### BindToAttribute
+
+Binds an existing Fusion `Value` to track an instance attribute. Same delayed-hydration pattern as `BindToProperty`.
+
+```lua
+local money = scope:Value(0)
+
+-- Later, when the instance is available:
+scope:BindToAttribute(money, player, "Money")
+```
+
+> ⚠️ Note: Values bound via `scope:BindToProperty` and `scope:BindToAttribute` will stop updating but keep their value if the instance is destroyed.
 
 ## Recommended: Globals Module for Singletons
 
